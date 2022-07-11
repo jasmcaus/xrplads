@@ -1,0 +1,35 @@
+<div class="page-wrapper" *ngIf="creative">
+    <div class="page-link-title">
+        <img src="assets/images/arrow-left.svg" alt="arrow-left" (click)="returnBack()" style="cursor: pointer">
+        <span class="me-item-name">{{ creative.name}}</span>
+    </div>
+    <div class="grid-wrapper">
+        <div class="grid-wrapper__item">
+            <ng-container *ngIf="creative.type === 'webm'; else image">
+                <video controls>
+                    <source [src]="creative.url" type="video/webm">
+                </video>
+            </ng-container>
+            <ng-template #image>
+                <img [src]="creative.url">
+            </ng-template>
+        </div>
+        <div class="grid-wrapper__item">
+            <div class="block-content">
+                <h5 class="title">Status</h5>
+                    <p class="status success">
+                        <span style="padding-right: 20px">Active</span>
+                    </p>
+
+            </div>
+            <div class="block-content">
+                <h5 class="title">Name</h5>
+                <p>{{ creative.name }}</p>
+            </div>
+            <div class="block-content">
+                <h5 class="title">Description</h5>
+                <p>{{ creative.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>

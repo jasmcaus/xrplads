@@ -1,0 +1,185 @@
+.app-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    background: #2a2931;
+
+    max-width: 90px;
+    padding: 64px 17px;
+    align-items: center;
+
+    .app-user-menu-item {
+        justify-content: center;
+    }
+}
+
+
+.app-user-info {
+    display: flex;
+    flex-direction: column;
+    &__uname {
+        padding-top: 16px;
+        align-self: center;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 110%;
+        text-align: center;
+        letter-spacing: -0.7px;
+        color: #636a77;
+        width: 100%;
+        min-width: 72px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    padding-bottom: 40px;
+}
+
+.app-user-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.app-user-menu-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 24px;
+    &__link {
+        font-style: normal;
+        font-weight: 100;
+        font-size: 18px;
+        line-height: 110%;
+        letter-spacing: -0.7px;
+        color: #e7e7e8;
+        padding-left: 10px;
+    }
+
+    &__link2 {
+        color: #636a77;
+        font-size: 13px;
+    }
+}
+
+a.active {
+    span {
+        color: #00ffff;
+        font-weight: bold;
+    }
+}
+
+.app-footer {
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    margin: 100px auto 46px;
+    width: 100%;
+    max-width: 1200px;
+    align-self: flex-end;
+}
+
+.app-social {
+    &__full {
+        img, a    {
+            &:nth-child(even) {
+                padding-right: 8px;
+            }
+            &:nth-child(odd) {
+                padding-right: 8px;
+            }
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+    }
+
+    &__minimize {
+        display: grid;
+        img, a {
+            &:nth-child(even) {
+                padding-bottom: 8px;
+            }
+            &:nth-child(odd) {
+                padding-bottom: 8px;
+            }
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+}
+
+.app-toolbar {
+    height: 52px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    button {
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1em 4em;
+    }
+}
+
+.app-mat-toolbar {
+    background: none;
+    display: flex;
+    justify-content: flex-end;
+    min-height: 65px;
+    padding: 0;
+
+    img {
+        height: 28px;
+    }
+
+    button {
+        border-color: #636a77;
+        border-radius: 30px;
+        padding: 0 5px;
+        max-width: 250px;
+    }
+
+    span {
+        color: #636a77;
+        padding: 0 10px;
+    }
+}
+
+.app-connect-wallet {
+    font-size: 14px !important;
+    background: transparent !important;
+    border: 2px #00ffff solid !important;
+    border-radius: 59px;
+    color: #fff;
+    padding: 0.7em 2em !important;
+    margin-bottom: 20px !important;
+    margin-top: 10px;
+  
+    &:hover {
+        background: linear-gradient(135deg,#00649a 0,#00ffff 100%) !important;
+        color: #fff;
+        transition: all 300ms ease 0ms;
+        transition-delay: 200ms;
+    }
+}
+
+.user-address-button {
+    border: 2px solid #00ffff !important;
+}
+
+.user-address-text {
+    font-family: "Inconsolata";
+    color: rgb(228, 228, 228) !important;
+}
+
+.user-menu {
+    border: 2px solid #00ffff !important;
+}

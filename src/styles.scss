@@ -1,0 +1,282 @@
+@import "custom-theme";
+
+html {
+    overflow: hidden;
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    background: #12111a;
+    font-family: 'Inter', sans-serif;
+    // font-size: 16px;
+    // font-weight: 400;
+    color: #fff;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+/* scrollbar redesign */
+* {
+    scrollbar-width: thin;
+    // scrollbar-color: map.get($color-config, 'primary') white;
+}
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+    width: 8px;
+}
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #636A77;
+    border-radius: 20px;
+    border: 1px transparent;
+}
+
+.page-wrapper-1 {
+    display: grid;
+    // display: flex;
+    // flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 60px;
+    overflow: hidden;
+}
+
+.page-wrapper-2 {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.modal-backdrop {
+    background-color: rgba($color: #000000, $alpha: 0.8);
+}
+
+.cdk-overlay-container {
+    .connect-dialog-panel {
+        overflow: auto;
+        max-height: 100%;
+        background: #2A2931;
+    }
+}
+
+.mat-dialog-container {
+    padding: 0 !important;
+    border-radius: 8px !important;
+    background: none !important;
+}
+
+/* customize material calendar */
+.mat-calendar-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+}
+
+.mat-calendar-table-header {
+    font-family: 'Inter', sans-serif;
+    color: #636A77;
+    th {
+        font-size: 15px;
+    }
+}
+
+.mat-calendar-body-cell-content {
+    border: none !important;
+    color: white;
+}
+
+.mat-calendar-body-label {
+    opacity: 0;
+}
+
+.mat-calendar-body-label[colspan="7"] {
+    display: none;
+}
+.mat-calendar-body-today.mat-calendar-body-selected {
+    box-shadow: none;
+}
+.mat-body-2 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 110%;
+    color: #FFFFFF;
+}
+.mat-subheading-1 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 110%;
+    color: #FFFFFF;
+
+    @media(max-width: 768px) {
+        font-size: 20px;
+    }
+}
+
+.mat-calendar-body-today.mat-calendar-body-selected {
+    box-shadow: none;
+}
+
+.mat-form-field {
+    font-size: 15px;
+    line-height: inherit;
+}
+
+.custom-form-field {
+    input::placeholder {
+        color: #636A77;
+    }
+
+    textarea::placeholder {
+        color: #636A77;
+    }
+
+    &.mat-form-field-appearance-outline {
+
+        .mat-form-field-outline {
+            color: #636A77;
+        }
+
+        .mat-form-field-outline-thick {
+            color: #00ffff;
+        }
+
+        .mat-form-field-wrapper {
+            padding: 0;
+            margin: 0;
+        }
+
+        .mat-select-arrow {
+            color: #636A77;
+        }
+
+        .mat-select-arrow-wrapper {
+            transform: none;
+        }
+
+        .mat-select-value {
+            color: #636A77;
+        }
+
+        .mat-select-placeholder {
+            color: #636A77;
+        }
+
+        .mat-form-field-infix {
+            border: none;
+        }
+    }
+}
+
+.custom2-form-field {
+    input::placeholder {
+        color: #636A77;
+    }
+
+    textarea::placeholder {
+        color: #636A77;
+    }
+
+    &.mat-form-field-appearance-outline {
+
+        .mat-form-field-outline {
+            color: #636A77;
+        }
+
+        .mat-form-field-outline-thick {
+            color: #00ffff;
+        }
+
+        .mat-form-field-wrapper {
+            padding: 0;
+            margin: 0;
+        }
+
+        .mat-select-arrow {
+            color: #636A77;
+        }
+
+        .mat-select-arrow-wrapper {
+            transform: none;
+        }
+
+        .mat-select-value {
+            color: #636A77;
+        }
+
+        .mat-select-placeholder {
+            color: #636A77;
+        }
+
+        .mat-form-field-infix {
+            border: none;
+        }
+
+        .mat-form-field-flex {
+            padding: 0 0 0 0.75em;
+        }
+    }
+}
+
+
+// .mat-flat-button {
+//     background: transparent;
+//     border-width: 2px solid !important;
+//     border-color: #00ffff;
+//     border-radius: 20px;
+//     color: #fff;
+//     // cursor: pointer;
+// }
+
+.mat-flat-button.mat-primary.mat-button-disabled {
+    background: #636A77;
+    color: white;
+}
+
+
+.user-menu {
+    &.mat-menu-panel {
+        background: #12111a;
+        border: 2px solid #00ffff !important;
+        box-sizing: border-box;
+        margin-top: 6px;
+    }
+
+    .mat-menu-item {
+        line-height: 32px;
+        height: 32px;
+        color: #cac8c8;
+        font-size: 14px;
+        display: flex;
+        border-radius: 2px !important;
+        align-items: center;
+
+        &:hover:not([disabled]) {
+            background: rgba(0, 0, 0, 0.08);
+        }
+    }
+}
+
+.mat-list-item-content {
+    padding: 0 !important;
+}
+
+.mat-select-panel {
+    background-color: #12111a;
+    border: 1px solid #00ffff;
+
+    .mat-option-text {
+        color: #FFFFFF;
+    }
+}

@@ -1,0 +1,14 @@
+<div style="display: grid; grid-gap: 16px; padding: 36px 40px; background: #2A2931; justify-content: center; color: white">
+    <span style="font-size: 40px; font-weight: 700; font-family: 'Inter', sans-serif;">Login via XRPL Credentials</span>
+    <mat-form-field class="custom-form-field" appearance="outline">
+        <input matInput type="text" autocomplete="off" placeholder="Testnet Address" [(ngModel)]="testnet_address">
+    </mat-form-field>
+    <mat-form-field class="custom-form-field" appearance="outline">
+        <input matInput type="text" autocomplete="off" placeholder="Testnet Secret" [(ngModel)]="testnet_secret">
+    </mat-form-field>
+    <button mat-flat-button
+            class="mat-primary btn-save"
+            style="width: 115px; margin: 0 auto;"
+            (click)="login()"
+            [disabled]="!testnet_address || !testnet_secret">Login</button>
+</div>

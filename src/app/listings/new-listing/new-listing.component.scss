@@ -1,0 +1,55 @@
+.create_btn {
+    width: fit-content;
+    padding: 0;
+    line-height: inherit;
+
+    font-style: normal;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: -0.7px;
+
+    &__blue {
+        color: #133971;
+        &:hover {
+            color: #ffbb00;
+            transition: all 0.3s ease;
+        }
+
+        &__pressed {
+            color: #ffbb00;
+        }
+    }
+}
+
+.filename-wrapper {
+    text-overflow: ellipsis;
+    width: 100%;
+    max-width: 200px;
+    overflow: hidden;
+    //align-self: center;
+}
+
+.btn-save {
+    padding: 12px 40px;
+    max-width: 100%;
+    width: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffbb00;
+    border-radius: 4px;
+
+    font-style: normal;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: -0.7px;
+    color: #ffffff;
+/*
+    &:hover {
+        transition: all 0.3s ease;
+        background: rgba(#ffbb00, 0.7);
+    }
+    */
+}

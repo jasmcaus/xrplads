@@ -1,0 +1,58 @@
+<div class="page-wrapper-1" style="p0">
+    <div *ngIf="listing" class="me-item-info">
+        <div class="page-link-title">
+            <a routerLink="/">
+                <img src="assets/images/arrow-left.svg" alt="arrow-left">
+            </a>
+            <span class="me-item-name">{{listing?.location}}: {{listing?.name}}</span>
+        </div>
+
+        <div class="item-content">
+            <div class="left-item">
+                <img [src]="listing?.thumb_url" alt="{{listing?.name}}">
+                <ul class="cascade-item-props">
+                    <li>
+                        <div class="cascade-item-props__title">Price:</div>
+                        <div class="cascade-item-props__value-wrapp">
+                            <span class="cascade-item-props__value">{{listing?.price}} XRP</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="cascade-item-props__title">Likes:</div>
+                        <div class="cascade-item-props__value">{{listing?.likes}}</div>
+                    </li>
+                    <li>
+                        <div class="mat-body-1 cascade-item-props__title">Traffic:</div>
+                        <div class="mat-body-2 cascade-item-props__value">{{ listing?.weekly_users }}</div>
+                    </li>
+                    <li>
+                        <div class="mat-body-1 cascade-item-props__title">Listed by:</div>
+                        <div class="mat-body-2 cascade-item-props__value">{{ formatted_listing_owner_address }}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="chart-description-box">
+            <div class="grid-item left-itm">
+                <app-history [header]="'Total price'"></app-history>
+            </div>
+            <div class="grid-item right-itm">
+                <app-about [header]="'Description'" body="{{ listing?.description }}">
+                </app-about>
+            </div>
+        </div>
+
+        <button class="btn-pa mat-primary" 
+                [class.btn-pa__unsigned]="!listing.is_active" 
+                [disabled]="!listing.is_active" 
+                (click)="book_listing()"
+        >
+            Book Listing
+        </button>
+
+        <ng-container *ngIf="should_display_book_listing">
+            <app-book-listing [listing]="listing" style="margin-top: 16px"></app-book-listing>
+        </ng-container>
+    </div>
+</div>

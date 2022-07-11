@@ -1,0 +1,67 @@
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column">
+    <span class="filter-text"> </span>
+    <span class="add-dummy-space">     </span>
+    <span class="mat-headline main-title">Available Listings</span>
+
+    <div class="page-wrapper">
+        <div class="form-wrapper">
+            <button class="button-search" (click)="new_listing()">New</button>
+            <mat-form-field matTooltip="Search your listings" class="custom-form-field search-in" appearance="outline">
+                <input matInput 
+                        type="text"
+                        placeholder="Search..."
+                        [formControl]="search" 
+                        autocomplete="off"
+                        (keyup)="parse_search(search.value)"
+                        (keyup.enter)="parse_search(search.value)"
+                >
+                <button mat-icon-button
+                        matSuffix
+                        (click)="parse_search(search.value)"
+                        style="margin-left: 8px;">
+                    <mat-icon svgIcon="search"></mat-icon>
+                </button>
+            </mat-form-field>
+            <mat-form-field class="custom-form-field dr-in" appearance="outline">
+                <mat-select class="select-wrap" placeholder="Sort" [(value)]="sort_type" (valueChange)="sorting()">
+                    <mat-option value="id">Newest</mat-option>
+                    <mat-option value="category">Category</mat-option>
+                    <mat-option value="status">Status</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+
+    <!-- Display all listings -->
+    <div class="listing-space-container">
+        <div *ngFor="let listing of listings" class="listing-space-content">
+            <img *ngIf="!listing.is_active || (listing.is_active && selected_listing !== listing)"
+                [src]="listing.thumb_url"
+                alt="unavailable"
+                [class.unavailable]="!listing.is_active"
+                (click)="navigate_to_page_of(listing)"
+            >
+            <div *ngIf="!listing.is_active && selected_listing !== listing"
+                 class="listing-space-content-selected-unavailable"
+                 (click)="navigate_to_page_of(listing)"
+            >
+                <div style="padding:25px; display: grid">
+                    <span class="mat-subheading-1">Coming soon</span>
+                </div>
+            </div>
+            <span class="mat-body-2"
+                  [class.listing-space-content-selected-logout-color]="selected_listing === listing"
+                  style="padding-top: 23px; padding-bottom: 8px; letter-spacing: 1px;"
+            >
+                {{listing.location}}
+            </span>
+            <span class="mat-subheading-1"
+                  style="text-transform: capitalize; font-family: Inconsolata;"
+                  [class.listing-space-content-selected-logout-color]="selected_listing === listing"
+            >
+                {{listing.name}}
+            </span>
+        </div>
+    </div>
+</div>

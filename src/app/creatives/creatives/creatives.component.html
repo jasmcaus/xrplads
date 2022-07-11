@@ -1,0 +1,52 @@
+<div class="page-wrapper">
+    <h2 class="page-title">Your Creatives</h2>
+    <ng-container *ngIf="creatives && creatives.length == 0">
+        <h2 class="page-subtitle">You don't have any currently. Try creating one below.</h2>
+    </ng-container>
+    <div class="form-wrapper">
+        <button class="button-search" (click)="new_creative()">New</button>
+        <mat-form-field matTooltip="Search creatives" class="custom-form-field search-in" appearance="outline">
+            <input matInput 
+                    type="text"
+                    placeholder="Search..."
+                    [formControl]="search"
+                    autocomplete="off"
+                    (keyup)="parseSearch(search.value)"
+                    (keyup.enter)="parseSearch(search.value)"
+            >
+            <button mat-icon-button
+                    matSuffix
+                    (click)="parseSearch(search.value)"
+                    style="margin-left: 8px;">
+                <mat-icon svgIcon="search"></mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field class="custom-form-field dr-in" appearance="outline">
+            <mat-select class="select-wrap" placeholder="Sort" [(value)]="sort_type" (valueChange)="sorting()">
+                <mat-option value="status">Status</mat-option>
+                <mat-option value="id">Newest</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="me-grid">
+        <div class="me-grid__item" *ngFor="let cr of filtered_creatives">
+            <ng-container *ngIf="cr.type === 'webm'; else image">
+                <img [src]="cr.thumbnail"
+                        style="cursor: pointer"
+                        (click)="go_to_details(cr.id)">
+            </ng-container>
+            <ng-template #image>
+                <img [src]="cr.thumbnail || cr.url"
+                         style="cursor: pointer"
+                         (click)="go_to_details(cr.id)">
+            </ng-template>
+            <div class="me-grid__description">
+                <div class="me-grid__status" [class.success]="true"></div>
+                <p class="me-grid__name">{{cr.name}}</p>
+                <button class="me-grid__del-btn" mat-icon-button matTooltip="Delete" (click)="deleteCreatives(cr)">
+                    <mat-icon svgIcon="delete"></mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

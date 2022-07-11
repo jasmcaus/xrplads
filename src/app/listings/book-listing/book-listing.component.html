@@ -1,0 +1,80 @@
+<div class="wrapper-data">
+    <div class="me-place">
+        <div id="calendar" class="cal">
+            <h4 class="me-place__title">Date</h4>
+            <div class="me-place-datetimes">
+                <mat-calendar #calendar 
+                              [(selected)]="selected_date" 
+                              [minDate]="today"
+                              [headerComponent]="getCustomHeader()"
+                              (selectedChange)="select_date($event)"
+                >
+                </mat-calendar>
+            </div>
+        </div>
+        <div id="timeslots" class="time">
+            <h4 class="me-place__title">Available slots for {{ selected_date | formatDate }}</h4>
+            <div class="me-place-datetimes">
+                <!-- <h5 class="box-title-time">{{ selected_date | formatDate }}</h5> -->
+                <div class="scroll-container">
+                    <ng-container *ngIf="timeslots.am.length > 0">
+                        <div id="am" class="am-grid">
+                            <h5>A.M.</h5>
+                            <div class="grid-time">
+                                <div *ngFor="let ts of timeslots.am"
+                                        class="timeslot"
+                                        [class.active]="selected_timeslot === ts"
+                                        [class.is_booked]="ts.is_booked"
+                                        matTooltip="Timeslot unavailable"
+                                        [matTooltipDisabled]="!ts.is_booked"
+                                        matTooltipPosition="above"
+                                        (click)="selectTimeslot(ts)">
+                                    <span>{{ ts.from_time | formatDate : 'HH12MM' }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="timeslots.pm.length > 0">
+                        <div id="pm" class="pm-grid">
+                            <h5>P.M.</h5>
+                            <div class="grid-time">
+                                <ng-container *ngFor="let timeslot of timeslots.pm">
+                                    <div class="timeslot"
+                                            [class.active]="selected_timeslot === timeslot"
+                                            [class.is_booked]="timeslot.is_booked"
+                                            matTooltip="Timeslot unavailable"
+                                            [matTooltipDisabled]="!timeslot.is_booked"
+                                            matTooltipPosition="above"
+                                            (click)="selectTimeslot(timeslot)">
+                                        <span>
+                                            {{ timeslot.from_time | formatDate : 'HH12MM' }}
+                                        </span>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+<div *ngIf="selected_timeslot" id="creative" class="creative">
+    <h5 class="creative__title">Choose a Creative to Display</h5>
+    <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-select placeholder="Choose a Creative" [(value)]="selected_creative_id" (valueChange)="showCreatingPanel()">
+            <mat-option *ngFor="let creative of creatives" [value]="creative.id">{{ creative.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <ng-container *ngIf="is_zero_creatives">
+        <span class="mat-button create_btn create_btn__blue"
+              (click)="navigate_to_creatives_section()">No creatives found. Try creating one first.</span>
+    </ng-container>
+
+    <ng-container *ngIf="selected_creative_id">
+        <button mat-flat-button class="mat-primary" style="height: 68px" (click)="book_listing()">Book Listing</button>
+    </ng-container>
+</div>
